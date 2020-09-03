@@ -20,13 +20,20 @@ function Bar(width, height, x, y, speed) {
         }
     }
     this.moveRight = function () {
-        if (this.x < 700-this.width) {
+        if (this.x < DEFAULT_WIDTH-this.width) {
             this.x += this.speed;
             console.log("ok: " + this.x);
         }
     }
-    this.render = function () {
-        let ctx = document.getElementById("canvas").getContext("2d");
-        ctx.clearRect(0, 0, 700, 900);
+}
+function moveObj(event) {
+    switch (event.which) {
+        case 37:
+            bar.moveLeft();
+            break;
+        case 39:
+            bar.moveRight();
+            break;
     }
+    bar.draw();
 }
